@@ -66,6 +66,20 @@ body
 .pricelement::after
     content: 'Ƀ'
 
+.carted
+  color: var(--mainwhite)
+  border: 1px solid var(--mainwhite)
+  background-color: transparent
+  
+.notcarted
+  color: var(--mainyellow)
+  border: 1px solid var(--mainyellow)
+  background-color: transparent
+  transition: .25s
+  &:hover
+    background-color: var(--mainyellow)
+    color: white
+  
 @keyframes App-logo-spin 
   from 
     transform: rotate(0deg)

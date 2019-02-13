@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { ProductConsumer } from '../context';
+import PropTypes from 'prop-types'
 
 export default class Product extends Component {
   render() {
@@ -8,6 +9,7 @@ export default class Product extends Component {
     return (
       <div className="details">
         <div>
+        
         <Link to="/details">
         <p>Product Details</p>
           <div className="elementDetails" onClick={() => console.log('clicked')}>
@@ -22,7 +24,7 @@ export default class Product extends Component {
           <br />
           </ Link>
           <div className="inline" style={{display: '-webkit-inline-box', fontSize: 16 }}>
-            <button className="cart-btn" disabled={inCart ? true : false } onClick={() => console.log('clicked')} style={{backgroundColor: '#ff9800', color: 'white', border: 'none', borderRadius: 50, cursor: 'pointer'}}>
+            <button className="cart-btn" disabled={inCart ? true : false } onClick={() => console.log(`clicked ${id}`)} style={{backgroundColor: '#ff9800', color: 'white', border: 'none', borderRadius: 50, cursor: 'pointer'}}>
             {inCart ? (
               <p>Incart</p>
             ) : (
@@ -38,3 +40,13 @@ export default class Product extends Component {
     );
   }
 }
+
+Product.propTypes = {
+  product: PropTypes.shape({
+    id: PropTypes.number,
+    img: PropTypes.string,
+    title: PropTypes.string,
+    price: PropTypes.number,
+    inCart: PropTypes.boolean
+  }).isRequired
+};
