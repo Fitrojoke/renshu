@@ -21,7 +21,7 @@ export default class ProductProvider extends Component {
     })
   };
   addToCart = id => {
-    console.log('heello dadd to cart');
+    console.log(`Item id:${id} add to Cart`);
   };
   
   render() {

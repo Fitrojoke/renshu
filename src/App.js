@@ -25,6 +25,7 @@ class App extends Component {
           </Switch>
         </header>                
         </ ProductProvider>
+        <footer> Last imperor </footer>
       </div>
     );
   }

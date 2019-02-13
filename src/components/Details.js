@@ -12,30 +12,29 @@ export default class Details extends Component {
             {value => {
               const {id, title, price, img, inCart, company, info} = value.detailProduct;
               return (
-                <div>
+                <div style={{marginBottom: "1.75em"}}>
                 <div><h3>{title}</h3></div>
                 <div className="datailscontainer">
-                  <div><img src={img} /></div>
-                  <div><p>{info}</p></div>
+                  <div className="productImg"><img src={img} /></div>
+                  <div className="text"><p>{info}</p></div>
                 </div>
-                <div>
+                <div className="listInfo">
                   <dl>
                     <dt>Comapany:</dt>
-                    <dd>{company}</dd>
+                    <dd>{company.toUpperCase()}</dd>
                     <dt>Price:</dt>
-                    <dd>{price} + 税金</dd>
+                    <dd>{price} + Tax</dd>
                   </dl>
                 </div>
-                <div>
+                <div className="forbuttoms">
                 <Link to="/">
-                  <button>Back to the Shop</button>
+                  <button>To Shopping</button>
                 </Link>
                   <button disabled={inCart ? true : false} className={inCart ? "carted" : "notcarted"}
-                  onClick={()=> {
-                    value.addToCart(id)
-                  }}>{inCart ? "inCart" : "Add to Cart"}</button>
+                  onClick={()=> {value.addToCart(id)}}>{inCart ? "inCart" : "Add to Cart"}</button>
                 </div>
                 </div>
+                
               )
             }}
           </ ProductConsumer>
