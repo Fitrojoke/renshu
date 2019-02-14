@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.sass';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Switch, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Products from './components/Products';
 import Details from './components/Details';
-import Cart from './components/Cart';
+import Cart from './components/Cart/Cart';
 import Default from './components/Default';
 import { ProductProvider } from './context';
 

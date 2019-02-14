@@ -10,32 +10,34 @@ export default class Product extends Component {
       <div className="details">
         <div>
         <ProductConsumer>
-          {(value) => (
+          {value => {
+            return (
+              <div>
             <Link to="/details">
               <p>Product Details</p>
                 <div className="elementDetails" onClick={() => value.handleDetail(id)}>
-                  
-                    <img src={ img } alt="product" />
-                  
+                  <img src={ img } alt="product" />                  
                 </div>
                 <div className="inlinelement">
                   <p className="titlelement">{title}</p>
                   <p className="pricelement">{price}</p>
                 </div>
                 <br />
-              </ Link>
-          )}
+                 
+              </Link>  
+                <div className="inline" style={{display: '-webkit-inline-box', fontSize: 16 }}>
+                  <button className="cart-btn" disabled={inCart ? true : false } onClick={() => value.addToCart(id)} style={{backgroundColor: '#ff9800', color: 'white', border: 'none', borderRadius: 50, cursor: 'pointer'}}>
+                  {inCart ? (
+                    <p style={{marginBottom: 0}}>Incart</p>
+                  ) : (
+                    <i className="fas fa-cart-plus" style={{padding: "6px 1px 6px 0px"}}></i>
+                  )}
+                  </button>
+                </div> 
+              </div>            
+            );
+          }}
         </ProductConsumer>
-        
-        <div className="inline" style={{display: '-webkit-inline-box', fontSize: 16 }}>
-          <button className="cart-btn" disabled={inCart ? true : false } onClick={() => console.log(`clicked ${id}`)} style={{backgroundColor: '#ff9800', color: 'white', border: 'none', borderRadius: 50, cursor: 'pointer'}}>
-          {inCart ? (
-            <p>Incart</p>
-          ) : (
-            <i className="fas fa-cart-plus" style={{padding: "6px 1px 6px 0px"}}></i>
-          )}
-          </button>
-        </div>
         </div>
       </div>
     );

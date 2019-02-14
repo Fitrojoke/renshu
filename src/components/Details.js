@@ -15,7 +15,7 @@ export default class Details extends Component {
                 <div style={{marginBottom: "1.75em"}}>
                 <div><h3>{title}</h3></div>
                 <div className="datailscontainer">
-                  <div className="productImg"><img src={img} /></div>
+                  <div className="productImg"><img src={img} alt="New" /></div>
                   <div className="text"><p>{info}</p></div>
                 </div>
                 <div className="listInfo">
