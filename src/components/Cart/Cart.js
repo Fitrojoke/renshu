@@ -3,6 +3,7 @@ import Title from '../Title';
 import CartColums from './CartColums';
 import { ProductConsumer } from '../../context';
 import CartList from './CartList';
+import CartTot from './CartTot';
 
 export default class Cart extends Component {
   render() {
@@ -18,6 +19,7 @@ export default class Cart extends Component {
                 <div className="colums">
                   <CartColums />
                   <CartList value={value} />
+                  <CartTot value={value} />
                 </div>
                 </div>
               )

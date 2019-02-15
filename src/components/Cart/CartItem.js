@@ -27,11 +27,11 @@ export default function CartItem ({item,value}) {
           </div>
         </div>
       </div>
-      <div className="simplecolum">
-        <i className="fas fa-trash" style={{color: "var(--mainyellow)"}}></i>
+      <div className="simplecolum" onClick={()=> removeItem(id)}>
+        <i className="fas fa-trash" style={{color: "var(--mainyellow)", cursor: "pointer"}}></i>
       </div>
       <div className="simplecolum">
-        <p>{price} Ƀ</p>
+        <p>{total} Ƀ</p>
       </div>
     </div>
   );
