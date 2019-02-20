@@ -26,7 +26,6 @@ export default class ProductProvider extends Component {
   };
   
   addToCart = id => {
-    console.log(`Item id:${id} add to Cart`);
     let tempProducts = [...this.state.products];
     const index = tempProducts.indexOf(this.getItem(id));
     const product = tempProducts[index];
@@ -113,8 +112,11 @@ export default class ProductProvider extends Component {
   };
   
   clearCart = () => {
-    this.setState(()=> {
-      return {cart: []}
+    this.setState(
+    () => {
+      return {
+        cart: []
+      };
     }, () => {
       this.addTotals();
     })
