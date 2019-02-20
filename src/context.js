@@ -44,19 +44,80 @@ export default class ProductProvider extends Component {
   };
   
   incrementAmount = id => {
-    console.log('Incrementing');
+    let tempCart = [...this.state.cart];
+    const selectedProduct = tempCart.find(item => item.id === id);
+    
+    const index = tempCart.indexOf(selectedProduct);
+    const product = tempCart[index];
+    product.count = product.count + 1;
+    
+    product.total = product.count * product.price;
+    
+    this.setState(
+      () => {
+        return {cart: [...tempCart]}
+      },
+      () => {
+        this.addTotals();
+      }
+    );
   };
   
   decrementAmount = id => {
-    console.log('Decrementing');
+    let tempCart = [...this.state.cart];
+    const selectedProduct = tempCart.find(item => item.id === id);
+    
+    const index = tempCart.indexOf(selectedProduct);
+    const product = tempCart[index];
+    product.count = product.count - 1;
+    
+    product.total = product.count * product.price;
+    
+    if (product.count === 0) {
+      this.removeItem(id);
+    } else {
+      this.setState(
+        () => {
+          return {cart: [...tempCart]}
+        },
+        () => {
+          this.addTotals();
+        }
+      );
+    }
   };
   
   removeItem = id => {
-    console.log('Removed');
+    let tempProducts = [...this.state.products];
+    let tempCart = [...this.state.cart];
+    
+    tempCart = tempCart.filter(item => item.id !== id);
+    
+    const index = tempProducts.indexOf(this.getItem(id));
+    
+    let removedProduct = tempProducts[index];
+    removedProduct.inCart = false;
+    removedProduct.count = 0;
+    removedProduct.total = 0;
+    
+    this.setState(
+      () => {
+        return {
+          cart: [...tempCart],
+          products: [...tempProducts]
+        };
+      }, () => {
+        this.addTotals();
+      }
+    )
   };
   
   clearCart = () => {
-    console.log('Cart empty');
+    this.setState(()=> {
+      return {cart: []}
+    }, () => {
+      this.addTotals();
+    })
   };
   
   addTotals = () => {
